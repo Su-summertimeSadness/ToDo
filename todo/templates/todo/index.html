@@ -1,0 +1,53 @@
+{% extends 'todo/todo_base.html' %}
+
+{% block title %}
+Actions list
+{% endblock title %}
+
+
+{% block content %}
+<h1 class="mb-5">Actions:</h1>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Category</th>
+        <th scope="col">Title</th>
+        <th scope="col">Text</th>
+        <th scope="col">Dead Line</th>
+        <th scope="col">Created</th>
+        <th scope="col">Status</th>
+    </tr>
+    </thead>
+    {% for action in actions %}
+    <tbody>
+    <tr>
+        <th scope="row">{{ action.id }}</th>
+        <td>
+            {{ action.tag }}
+        </td>
+        <td>{{ action.title }}</td>
+        <td>{{ action.body }}</td>
+        <td>{{ action.dead_line }}</td>
+        <td>{{ action.date_created }}</td>
+
+        {% if action.is_done %}
+
+        <td><input type="checkbox" value="" onclick="return false" checked></td>
+        {% else %}
+        <td><input type="checkbox" value="" onclick="return false"></td>
+        {% endif %}
+
+        <td><a href="{{ action.get_absolute_url }}" class="btn btn-light">Read</a></td>
+    </tr>
+    </tbody>
+    {% endfor %}
+    {% endblock content %}
+
+</table>
+
+
+
+
+

@@ -1,0 +1,13 @@
+{% extends 'todo/todo_base.html' %}
+
+{% block title %}
+ {{ block.super }} - Tags
+{% endblock title %}
+
+{% block content %}
+<h1 class="mb-5">Tags:</h1>
+{% for tag in tags %}
+<a href="{{ tag.get_absolute_url }}" class="btn btn-light"><h2>{{tag.title}}</h2></a>
+
+{% endfor %}
+{% endblock content %}

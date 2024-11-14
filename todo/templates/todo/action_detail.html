@@ -1,0 +1,43 @@
+{% extends 'todo/todo_base.html' %}
+
+{% block title %}
+{{ block.super }} - {{ action.title }}
+{% endblock title %}
+
+{% block content %}
+<div class="card text-center">
+    <div class="card-header">
+        Dead Line: {{ action.dead_line }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"> {{ action.tag }} - {{ action.title }}</h5>
+        <p class="card-text">{{ action.body }}</p>
+        {% if action.is_done %}
+         <p class="card-text"> Current status: Done <input type="checkbox" checked></p>
+        {% else %}
+        <p class="card-text"> Current status: In progress.... <input type="checkbox" disabled></p>
+        {% endif %}
+
+
+        <form>
+
+            <button>Yeah, It's Already Done!
+                <!--               <a href="{% url 'actions_list' %} onclick={{ action.get_done }}"></a>-->
+            </button>
+            <button>
+               No, It's Not Done Yet!
+            </button>
+
+
+
+            <!--            <a href="{% url 'actions_list' %}" onclick="{{ action.get_not_done }}"></a>-->
+
+        </form>
+
+
+    </div>
+    <div class="card-footer text-body-secondary">
+        Created: {{ action.date_created }}
+    </div>
+</div>
+{% endblock content %}

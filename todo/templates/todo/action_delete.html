@@ -1,0 +1,17 @@
+{% extends 'todo/todo_base.html' %}
+
+{% block title %}
+Delete Action: {{ action.title|title }} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<form action="{{ action.get_delete }}" method="post">
+    {% csrf_token %}
+    <h2>Are You Sure You Want To Delete Action:</h2>
+    <h3>{{ action.title|title }}?</h3>
+    <button type="submit" class="btn btn-danger" >Delete</button>
+    <button class="btn btn-warning"><a href="{{ action.get_absolute_url }}">Cancel</a></button>
+
+
+</form>
+{% endblock content %}

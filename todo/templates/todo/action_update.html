@@ -1,0 +1,26 @@
+{% extends 'todo/todo_base.html' %}
+
+{% block title %}
+Update "{{ Action.title|title }}" - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<form action="{{ action.get_update }}" method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="form-group mb-5">
+        {% if field.errors %}
+        <div class="alert alert-danger">{{ field.errors }}</div>
+        {% endif %}
+        {{ field.label }}
+        {{ field }}
+
+
+    {% endfor %}
+
+ </div>
+    <button type="submit" class="btn btn-info">Update Action</button>
+
+</form>
+{% endblock content %}

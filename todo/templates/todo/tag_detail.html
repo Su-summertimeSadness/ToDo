@@ -1,0 +1,21 @@
+{% extends 'todo/todo_base.html' %}
+
+{% block title %}
+{{ block.super }} - {{ tag.title }}
+{% endblock title %}
+
+{% block content %}
+<h2>{{ tag.title }}:</h2>
+{% for action in tag.actions.all %}
+<div class="card w-75 mb-3">
+  <div class="card-body">
+    <h5 class="card-title">{{ tag.title }}</h5>
+    <p class="card-text">{{ action.body }}</p>
+      <p class="card-text">Is done: {{ action.is_done }}</p>
+
+    <a href="{{ action.get_absolute_url }}" class="btn btn-primary">{{ action.title }}</a>
+  </div>
+</div>
+
+{% endfor %}
+{% endblock content %}
